@@ -171,7 +171,7 @@ func (c *Scanner) GetRecommendations(screener, exchange, symbol, interval string
 	}
 	r, err := c.client.do("POST", string(payload), false)
 	if err != nil {
-		ContextLogger.Errorf("Exchange (%s) or symbol (%s) not found %v", exchange, symbol, err)
+		// ContextLogger.Errorf("Exchange (%s) or symbol (%s) not found %v", exchange, symbol, err)
 		return RecommendSummary{}, err
 	}
 	err = json.Unmarshal(r, &c.data)
@@ -233,7 +233,7 @@ func (c *Scanner) GetAnalysis(screener, exchange, symbol, interval string) (Reco
 	}
 	r, err := c.client.do("POST", string(payload), false)
 	if err != nil {
-		ContextLogger.Errorf("Exchange (%s) or symbol (%s) not found %v", exchange, symbol, err)
+		// ContextLogger.Errorf("Exchange (%s) or symbol (%s) not found %v", exchange, symbol, err)
 		return RecommendSummary{}, err
 	}
 	err = json.Unmarshal(r, &c.data)
