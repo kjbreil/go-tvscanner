@@ -206,8 +206,7 @@ func (c *Scanner) GetIchimoku(screener, exchange, symbol, interval string) (Ichi
 	}
 	r, err := c.client.do("POST", string(payload), false)
 	if err != nil {
-		ContextLogger.Errorf("Exchange (%s) or symbol (%s) not found %v", exchange, symbol, err)
-		return Ichimoku, value, err
+		return Ichimoku, value, fmt.Errorf("exchange (%s) or symbol (%s) not found %v", exchange, symbol, err)
 	}
 	err = json.Unmarshal(r, &c.data)
 	if err != nil {
